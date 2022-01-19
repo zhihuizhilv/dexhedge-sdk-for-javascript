@@ -28,7 +28,19 @@ async function main() {
         ethers.utils.parseEther("0"),
         ["0xFe57a912FcE2aE127CaCeDBBf8486A6891345eB9", "0xb9725546A70976CC2061cfBD2cc86Ef7A0e9Fa23"],
         Math.floor(Date.now()/1000+100));
+    console.log("tx");
     console.log(tx);
+    let receipt = await tx.wait();
+    console.log("收到receipt，交易已上链.");
+    console.log(receipt);
+    if (receipt.status == 1) {
+        console.log("交易成功");
+    } else {
+        console.log("交易失败");
+    }
+
+    let nonce = await dexHege.getNonce("0xa2D644EF59A735f6249D76aAB98F071523129Bb0");
+    console.log("nonce:", nonce);
 }
 
 main()

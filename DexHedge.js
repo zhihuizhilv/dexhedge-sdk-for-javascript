@@ -74,6 +74,15 @@ class DexHedge {
     async hedgeSwap(dexId, amountIn, amountOutMin, path, deadline) {
         return await this.dexHedge.swap(dexId, amountIn, amountOutMin, path, deadline);
     }
+
+    /**
+     * 获得指定账号的nonce
+     * @param account           指定账号
+     * @returns {Promise<*>}    下一个tx的nonce
+     */
+    async getNonce(account) {
+        return await this.provider.getTransactionCount(account);
+    }
     
 }
 
